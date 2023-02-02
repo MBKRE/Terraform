@@ -49,7 +49,7 @@ resource "aws_instance" "Dev" {
   vpc_security_group_ids = [aws_security_group.Dev.id]
   subnet_id     = aws_subnet.Dev.id
   network_interface {
-    network_interface_id = aws_network_interface.Dev.id
+    network_interface_id = aws_subnet.Dev.id
     device_index         = 0
   }
 
