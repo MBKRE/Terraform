@@ -46,7 +46,7 @@ resource "aws_security_group" "Dev" {
   }
 
   tags = {
-    Name = "Dev-security-group"
+    Name = "Dev2-security-group"
   }
 }
 resource "aws_instance" "Dev" {
