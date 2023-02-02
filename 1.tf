@@ -13,6 +13,7 @@ resource "aws_vpc" "Dev" {
 resource "aws_subnet" "Dev" {
   vpc_id = aws_vpc.Dev.id
   cidr_block = "10.0.0.0/24"
+  availability_zone = "us-east-1b"
   
   tags = {
     Name = "Dev-subnet"
@@ -38,7 +39,7 @@ resource "aws_security_group" "Dev" {
 resource "aws_instance" "Dev" {
   ami           = "ami-079f3a0174060175c"
   instance_type = "t2.micro"
-  availability_zone = "us-east-1b"
+  associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.Dev.id]
   subnet_id     = aws_subnet.Dev.id
 
