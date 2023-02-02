@@ -25,6 +25,7 @@ resource "aws_network_interface" "foo" {
   tags = {
     Name = "primary_network_interface"
   }
+}
 
 resource "aws_security_group" "Dev" {
   name        = "Dev-security-group"
