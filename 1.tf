@@ -19,6 +19,12 @@ resource "aws_subnet" "Dev" {
     Name = "Dev-subnet"
   }
 }
+resource "aws_network_interface" "foo" {
+  subnet_id   = aws_subnet.Dev.id
+
+  tags = {
+    Name = "primary_network_interface"
+  }
 
 resource "aws_security_group" "Dev" {
   name        = "Dev-security-group"
@@ -47,9 +53,8 @@ resource "aws_instance" "Dev" {
   instance_type = "t2.micro"
   associate_public_ip_address = true
   vpc_security_group_ids = [aws_security_group.Dev.id]
-  subnet_id     = aws_subnet.Dev.id
   network_interface {
-    network_interface_id = aws_subnet.Dev.id
+    network_interface_id = aws_network_interface.foo.id
     device_index         = 0
   }
 
