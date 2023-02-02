@@ -38,7 +38,7 @@ resource "aws_security_group" "Dev" {
 resource "aws_instance" "Dev" {
   ami           = "ami-079f3a0174060175c"
   instance_type = "t2.micro"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1b"
   vpc_security_group_ids = [aws_security_group.Dev.id]
   subnet_id     = aws_subnet.Dev.id
 
