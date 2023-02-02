@@ -18,7 +18,17 @@ resource "aws_subnet" "Dev" {
     Name = "Dev-subnet"
   }
 }
+resource "aws_security_group" "Dev" {
+  name        = "Dev-security-group"
+  description = "Allow HTTP traffic"
+  vpc_id      = aws_vpc.Dev.id
 
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 resource "aws_instance" "Dev" {
   ami           = "ami-079f3a0174060175c"
   instance_type = "t2.micro"
@@ -38,16 +48,7 @@ EOF
   }
 }
 
-resource "aws_security_group" "Dev" {
-  name        = "Dev-security-group"
-  description = "Allow HTTP traffic"
 
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
 
   tags = {
     Name = "Dev-security-group"
