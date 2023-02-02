@@ -20,7 +20,7 @@ resource "aws_subnet" "Dev" {
 }
 
 resource "aws_instance" "Dev" {
-  ami           = "ami-06e85d4c3149db26a"
+  ami           = "ami-079f3a0174060175c"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.Dev.id]
   subnet_id     = aws_subnet.Dev.id
