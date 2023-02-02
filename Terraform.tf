@@ -18,6 +18,7 @@ resource "aws_subnet" "Dev" {
     Name = "Dev-subnet"
   }
 }
+
 resource "aws_security_group" "Dev" {
   name        = "Dev-security-group"
   description = "Allow HTTP traffic"
@@ -29,6 +30,7 @@ resource "aws_security_group" "Dev" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
 resource "aws_instance" "Dev" {
   ami           = "ami-079f3a0174060175c"
   instance_type = "t2.micro"
