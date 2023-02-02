@@ -13,7 +13,6 @@ resource "aws_vpc" "Dev" {
 resource "aws_subnet" "Dev" {
   vpc_id = aws_vpc.Dev.id
   cidr_block = "10.0.0.0/24"
-  associate_public_ip_address = true
   
   tags = {
     Name = "Dev-subnet"
